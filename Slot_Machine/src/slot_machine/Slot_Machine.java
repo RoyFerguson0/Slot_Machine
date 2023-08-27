@@ -44,7 +44,6 @@ public class Slot_Machine {
                 quitGame = true;
             }
 
-
         } // End While Loop
         System.out.println("*** No Tokens Left ***\nThanks you for playing.");
 
