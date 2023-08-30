@@ -50,6 +50,7 @@ public class Home extends javax.swing.JFrame {
 
         pnlBorder.setLayout(null);
 
+        btnStart.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnStart.setText("Start");
         btnStart.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -57,8 +58,9 @@ public class Home extends javax.swing.JFrame {
             }
         });
         pnlBorder.add(btnStart);
-        btnStart.setBounds(260, 330, 72, 22);
+        btnStart.setBounds(250, 320, 80, 30);
 
+        btnDescription.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnDescription.setText("Description");
         btnDescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,7 +68,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
         pnlBorder.add(btnDescription);
-        btnDescription.setBounds(240, 360, 111, 22);
+        btnDescription.setBounds(230, 360, 120, 30);
         pnlBorder.add(lblBackground);
         lblBackground.setBounds(-4, -3, 610, 510);
 
