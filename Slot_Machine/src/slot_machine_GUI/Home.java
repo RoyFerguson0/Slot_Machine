@@ -51,10 +51,20 @@ public class Home extends javax.swing.JFrame {
         pnlBorder.setLayout(null);
 
         btnStart.setText("Start");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
         pnlBorder.add(btnStart);
         btnStart.setBounds(260, 330, 72, 22);
 
         btnDescription.setText("Description");
+        btnDescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDescriptionActionPerformed(evt);
+            }
+        });
         pnlBorder.add(btnDescription);
         btnDescription.setBounds(240, 360, 111, 22);
         pnlBorder.add(lblBackground);
@@ -83,6 +93,22 @@ public class Home extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(614, 507));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        // TODO add your handling code here:
+        
+        this.dispose();
+        new Slot_Game().setVisible(true);
+        
+    }//GEN-LAST:event_btnStartActionPerformed
+
+    private void btnDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescriptionActionPerformed
+        // TODO add your handling code here:
+        
+        this.dispose();
+        new Description().setVisible(true);
+        
+    }//GEN-LAST:event_btnDescriptionActionPerformed
 
     /**
      * @param args the command line arguments
