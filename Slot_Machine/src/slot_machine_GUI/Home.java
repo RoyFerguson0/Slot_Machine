@@ -98,7 +98,9 @@ public class Home extends javax.swing.JFrame {
 
     private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
         // TODO add your handling code here:
-        
+
+        // Close Home Form
+        // Open Slot Game Form
         this.dispose();
         new Slot_Game().setVisible(true);
         
@@ -106,7 +108,9 @@ public class Home extends javax.swing.JFrame {
 
     private void btnDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDescriptionActionPerformed
         // TODO add your handling code here:
-        
+
+        // Close Home Form
+        // Open Description Form
         this.dispose();
         new Description().setVisible(true);
         

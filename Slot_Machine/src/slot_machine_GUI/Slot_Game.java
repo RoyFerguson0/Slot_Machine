@@ -20,6 +20,8 @@ public class Slot_Game extends javax.swing.JFrame {
      */
     public Slot_Game() {
         initComponents();
+
+        // Setting Token Count
         appData.game.setTokenCount(5);
         lblSpinsLeft.setText("You have " + appData.game.getTokenCount() + " token(s) left!!");
         
@@ -33,7 +35,7 @@ public class Slot_Game extends javax.swing.JFrame {
         //sets the scaled image within the label
         lblBackground.setIcon(scaledIcon);
         
-        
+        // Hiding the button so you see the lever instead of a white box.
         btnPull.setOpaque(false);
         btnPull.setContentAreaFilled(false);
         btnPull.setBorderPainted(false);
@@ -55,6 +57,7 @@ public class Slot_Game extends javax.swing.JFrame {
         lblSymbol2 = new javax.swing.JLabel();
         lblSymbol1 = new javax.swing.JLabel();
         lblSpinsLeft = new javax.swing.JLabel();
+        lblWinnings = new javax.swing.JLabel();
         lblBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -78,7 +81,7 @@ public class Slot_Game extends javax.swing.JFrame {
             }
         });
         pnlBorder.add(btnQuit);
-        btnQuit.setBounds(260, 390, 72, 22);
+        btnQuit.setBounds(260, 440, 72, 22);
 
         lblSymbol3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblSymbol3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -99,6 +102,12 @@ public class Slot_Game extends javax.swing.JFrame {
         lblSpinsLeft.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnlBorder.add(lblSpinsLeft);
         lblSpinsLeft.setBounds(56, 80, 512, 44);
+
+        lblWinnings.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblWinnings.setForeground(new java.awt.Color(255, 0, 51));
+        lblWinnings.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnlBorder.add(lblWinnings);
+        lblWinnings.setBounds(60, 370, 450, 40);
 
         lblBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lever.jpg"))); // NOI18N
         pnlBorder.add(lblBackground);
@@ -122,39 +131,41 @@ public class Slot_Game extends javax.swing.JFrame {
     private void btnPullActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPullActionPerformed
         // TODO add your handling code here:
 
-        
+        // Code runs if you have got more than zero tokens.
         if(appData.game.getTokenCount() > 0) {
-            System.out.println("INformation... === " + appData.game.getTokenCount());
+            // Storing the token count in TheTokenCount variable.
             int TheTokenCount = appData.game.getTokenCount();
-
             TheTokenCount--;
+            // Setting the New Token Count
             appData.game.setTokenCount(TheTokenCount);
-            System.out.println("Updated token count------ " + appData.game.getTokenCount());
+
             // Calls another method/function called play_slots which updates the tokenCount
             TheTokenCount = play_slots(TheTokenCount);
+
             // Output the number of tokens the user has.
-            System.out.println("The token count is : " + TheTokenCount);
             lblSpinsLeft.setText("You have " + TheTokenCount + " token(s) left!!");
-            System.out.println("Spin again <CR> or Quit (Q): ");
+
+            // Setting the New Token Count after adding any winnings.
             appData.game.setTokenCount(TheTokenCount);
         }else {
+            // When you have no tokens left there will be a pop up asking if you wish to restart.
             var yesOrNo = JOptionPane.showConfirmDialog(null, "No tokens left thanks for playing.\nWould you like to restart?","Information",JOptionPane.YES_NO_OPTION);
+
+            // If answer is Yes.
+            // Reset token count to 5 and update the label for number of spins left.
             if(yesOrNo == 0){
                 appData.game.setTokenCount(5);
                 lblSpinsLeft.setText("You have " + appData.game.getTokenCount() + " token(s) left!!");
             }
         }
 
-            
-
-
-
-        System.out.println("*** No Tokens Left ***\nThanks you for playing.");
     }//GEN-LAST:event_btnPullActionPerformed
 
     private void btnQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuitActionPerformed
         // TODO add your handling code here:
-        
+
+        // Close Slot Game Form
+        // Open Home Form
         this.dispose();
         new Home().setVisible(true);
     }//GEN-LAST:event_btnQuitActionPerformed
@@ -193,9 +204,7 @@ public class Slot_Game extends javax.swing.JFrame {
             winnings = 0;
         }
 
-        // Output to let you know how many tokens are left as well as what the three random symbols where.
-        System.out.println("You have " + tokenCount + " token(s) left\n\n\t\t\t***********\n\t\t\t|" + randomSymbol1 + "|" +
-                randomSymbol2 + "|" + randomSymbol3 + "|\n\t\t\t***********\n\n");
+        // Outputs the three random symbols into the labels.
         lblSymbol1.setText(randomSymbol1);
         lblSymbol2.setText(randomSymbol2);
         lblSymbol3.setText(randomSymbol3);
@@ -203,10 +212,11 @@ public class Slot_Game extends javax.swing.JFrame {
 
         // If you get anything other than zero winnings you will get a congratulations message.
         if(winnings != 0) {
-            System.out.println("*** Congratulations you won " + winnings + " token ***");
+           // JOptionPane.showMessageDialog(null,"*** Congratulations you won " + winnings + " token(s) ***");
+            lblWinnings.setText("*** Congratulations you won " + winnings + " token(s) ***");
         }else{
             // If you get zero winnings.
-            System.out.println("*** No Win this Spin ***");
+            lblWinnings.setText("*** No Win this Spin ***");
         }
         // Returning the new tokenCount
         return (tokenCount + winnings);
@@ -242,17 +252,6 @@ public class Slot_Game extends javax.swing.JFrame {
         // Returning the Symbol
         return playerSymbol;
     }
-
-    public static String userInput(){
-        // To get users input.
-        // Created this method/function so you are not constantly having to repeat the same two lines of code.
-        Scanner userInput = new Scanner(System.in);
-        String input = userInput.nextLine();
-        return input;
-    }
-    
-    
-    
     
     
     /**
@@ -298,6 +297,7 @@ public class Slot_Game extends javax.swing.JFrame {
     private javax.swing.JLabel lblSymbol1;
     private javax.swing.JLabel lblSymbol2;
     private javax.swing.JLabel lblSymbol3;
+    private javax.swing.JLabel lblWinnings;
     private javax.swing.JPanel pnlBorder;
     // End of variables declaration//GEN-END:variables
 }
