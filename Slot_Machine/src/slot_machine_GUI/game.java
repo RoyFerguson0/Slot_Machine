@@ -2,6 +2,7 @@ package slot_machine_GUI;
 
 public class game {
 
+    // Objects State
     private String SymbolOne;
     private String SymbolTwo;
     private String SymbolThree;
@@ -11,27 +12,30 @@ public class game {
     public game(){
     }
 
-    // Setters
+    /////////////////////////////////////////
+    //////////////// Setters ////////////////
+    /////////////////////////////////////////
+
+    // Set Symbol 1
     public void setSymbolOne(String symbolOne){
         this.SymbolOne = symbolOne;
     }
 
+    // Set Symbol 2
     public void setSymbolTwo(String symbolTwo){
         this.SymbolTwo = symbolTwo;
     }
 
+    // Set Symbol 3
     public void setSymbolThree(String symbolThree){
         this.SymbolThree = symbolThree;
     }
 
+    // Set Token Count
     public void setTokenCount(int tokenCount){
         this.TokenCount = tokenCount;
     }
 
-    public void setWinnings(int winnings){
-        winnings = 5;
-        this.Winnings = winnings;
-    }
 
 
 

@@ -7,7 +7,7 @@ package slot_machine_GUI;
 import java.awt.Image;
 import java.util.Random;
 import java.util.Scanner;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 /**
  *
@@ -137,8 +137,13 @@ public class Slot_Game extends javax.swing.JFrame {
             lblSpinsLeft.setText("You have " + TheTokenCount + " token(s) left!!");
             System.out.println("Spin again <CR> or Quit (Q): ");
             appData.game.setTokenCount(TheTokenCount);
+        }else {
+            var yesOrNo = JOptionPane.showConfirmDialog(null, "No tokens left thanks for playing.\nWould you like to restart?","Information",JOptionPane.YES_NO_OPTION);
+            if(yesOrNo == 0){
+                appData.game.setTokenCount(5);
+                lblSpinsLeft.setText("You have " + appData.game.getTokenCount() + " token(s) left!!");
+            }
         }
-
 
             
 
